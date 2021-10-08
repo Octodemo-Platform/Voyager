@@ -129,7 +129,7 @@ jobs:
           path: ${{ env.COVERAGE_REPORT_DIRECTORY }}/Summary.md
 
       - name: Publish Coverage as a Status
-        uses: Sibz/github-status-action@v1.1.5
+        uses: Sibz/github-status-action@v1.1.6
         with:
           authToken: ${{ secrets.GITHUB_TOKEN }}
           state: ${{ steps.covgen.outputs.coverageCheckState }}

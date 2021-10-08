@@ -146,7 +146,7 @@ jobs:
 
       - name: Publish Container as a Status
         id: container_image_status
-        uses: Sibz/github-status-action@v1.1.5
+        uses: Sibz/github-status-action@v1.1.6
         with:
           authToken: ${{ secrets.GITHUB_TOKEN }}
           state: success
