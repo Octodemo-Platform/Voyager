@@ -54,7 +54,7 @@ jobs:
             const containers = [];
             if (statuses) {
                 statuses.forEach(status => {
-                  containers.push(status.description);
+                  containers.push(`ghcr.io/${{ github.repository_owner }}/${status.description}`.toLowerCase());
                 });
             }
 
@@ -89,7 +89,7 @@ jobs:
       - name: Scan Container Image
         uses: anchore/scan-action@v3
         with:
-          image: ghcr.io/${{ github.repository_owner }}/${{ matrix.container }}
+          image: ${{ matrix.container }}
           debug: false
           acs-report-enable: true
           # We want to upload the results and not fail the build here
@@ -126,13 +126,13 @@ jobs:
 
       - name: Fetch container
         run:
-          docker pull ghcr.io/${{ github.repository_owner }}/${{ matrix.container }}
+          docker pull ${{ matrix.container }}
 
       - name: Run Trivy vulnerability scanner
         id: container_scan
         uses: aquasecurity/trivy-action@0.0.20
         with:
-          image-ref: ghcr.io/${{ github.repository_owner }}/${{ matrix.container }}
+          image-ref: ${{ matrix.container }}
           format: template
           template: '@/contrib/sarif.tpl'
           output: trivy-results.sarif
