@@ -6,6 +6,7 @@ to be built into a container and then available to be deployed as an Azure Web A
 ![bookstore](https://user-images.githubusercontent.com/681306/114581130-5e2d4b00-9c77-11eb-837b-4efaefa29e39.png)
 
 
+
 The Workflow files in this repository provide the following features:
 
 * Pull Requests code is built and tested using Maven and a Docker container published
