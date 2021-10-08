@@ -76,8 +76,8 @@ class BuildParameters {
   }
   
   setOutput(name, value) {
-    core.setOutput(name, value);
-    core.info(`  ${name}: ${value}`);
+    this.core.setOutput(name, value);
+    this.core.info(`  ${name}: ${value}`);
   }
 }
 
