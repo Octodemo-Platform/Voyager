@@ -16,28 +16,30 @@ class BuildParameters {
     const core = this.core,
       context = this.context;
 
+    core.startGroup('build parameters');
+    core.info('Setting outputs:')
+    
     const shortSha = context.sha.substring(0, 8);
-    core.setOutput('github_short_sha', shortSha);
-
-    core.setOutput('github_ref', context.ref);
-    console.log(`GitHub Ref: ${context.ref}`);
+    this.setOutput('github_short_sha', shortSha);
+    this.setOutput('github_ref', context.ref);
 
     const branchNameMatch = BRANCH_REGEX.exec(context.ref),
       branchName = branchNameMatch ? branchNameMatch[1] : '';
-    core.setOutput('github_ref_branch_name', branchName);
-    console.log(`Resolved GitHub Branch Name: ${branchName}`);
+    this.setOutput('github_ref_branch_name', branchName);
 
     this.mavenVersionOutputs(branchName, shortSha);
 
-    core.setOutput('github_organization_name', context.repo.owner); //Not used currently
-    core.setOutput('github_repository_name', context.repo.repo);
-    core.setOutput('github_repository', process.env.GITHUB_REPOSITORY);
+    this.setOutput('github_organization_name', context.repo.owner); //Not used currently
+    this.setOutput('github_repository_name', context.repo.repo);
+    this.setOutput('github_repository', process.env.GITHUB_REPOSITORY);
 
     const containerName = `${context.repo.repo}`.toLowerCase();
-    core.setOutput('container_name', containerName);
+    this.setOutput('container_name', containerName);
 
     const containerOwner = `${context.repo.owner}`.toLowerCase();
-    core.setOutput('container_owner', containerOwner);
+    this.setOutput('container_owner', containerOwner);
+    
+    core.endGroup();
   }
 
   mavenVersionOutputs(branchName, shortSha) {
@@ -55,11 +57,11 @@ class BuildParameters {
     // We also need to append '-SNAPSHOT' to the end of the version number unless we are a release build, which
     // in the context of the Maven POM here, is the main branch (as that automatically deploys to prod).
     if (branchName === 'main') {
-      core.setOutput('maven_changelist', '');
-      core.setOutput('maven_sha1', `-${shortSha}`);
+      this.setOutput('maven_changelist', '');
+      this.setOutput('maven_sha1', `-${shortSha}`);
     } else {
-      core.setOutput('maven_changelist', `-${cleanBranchName}`);
-      core.setOutput('maven_sha1', `-${shortSha}-SNAPSHOT`);
+      this.setOutput('maven_changelist', `-${cleanBranchName}`);
+      this.setOutput('maven_sha1', `-${shortSha}-SNAPSHOT`);
     }
   }
 
@@ -71,6 +73,11 @@ class BuildParameters {
     } else {
       return name;
     }
+  }
+  
+  setOutput(name, value) {
+    core.setOutput(name, value);
+    core.info(`  ${name}: ${value}`);
   }
 }
 
