@@ -69,7 +69,7 @@ jobs:
               github: github,
               environment: LABEL_TO_ENVIRONMENT[context.payload.label.name.toLowerCase()],
               containerRegistry: process.env.container_registry,
-              appContainerImage: process.env.app_container_image,
+              appContainerImage: process.env.app_container_image.toLowerCase(),
               appContainerVersion: process.env.app_container_version,
               sha: context.sha,
               head: context.payload.pull_request.head.ref, //Branch name PR created from
