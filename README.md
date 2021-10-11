@@ -63,3 +63,5 @@ Building and running the container locally without the tasks in GitHub Codespace
 * `mvn package`
 * `docker build . --build-arg VERSION=1.0.0-SNAPSHOT --tag bookstore-v2:latest` (update to the correct version that mvn package will build for you)
 * `docker run -p 8080:8080 bookstore-v2:latest` to execute the container and bind to port `8080` to serve requests from
+
+edit
