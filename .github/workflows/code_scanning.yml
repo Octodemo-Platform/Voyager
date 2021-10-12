@@ -1,13 +1,5 @@
 name: Code scanning
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
 jobs:
   build:
     name: CodeQL Code Scanning
