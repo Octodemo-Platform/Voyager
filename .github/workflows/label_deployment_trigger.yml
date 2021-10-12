@@ -5,10 +5,10 @@ name: Label deployment trigger
 # integration environment.
 #
 
-on:
-  pull_request:
-    types:
-      - labeled
+# on:
+#   pull_request:
+#     types:
+#       - labeled
 
 # TODO may need to gate deployments on PRs from dependabot due to the head reference being illegal as it contains '/'s
 
