@@ -24,7 +24,7 @@ jobs:
         filename: .github/issues/rating-feature-issue.md
 
     - name: Add Design Team Comment
-      uses: actions/github-script@v4.1.0
+      uses: actions/github-script@v6.1.1
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
@@ -42,7 +42,7 @@ jobs:
           })
 
     - name: Add Product Owner Comment
-      uses: actions/github-script@v4.1.0
+      uses: actions/github-script@v6.1.1
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
