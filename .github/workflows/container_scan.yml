@@ -130,7 +130,7 @@ jobs:
 
       - name: Run Trivy vulnerability scanner
         id: container_scan
-        uses: aquasecurity/trivy-action@0.0.20
+        uses: aquasecurity/trivy-action@0.7.0
         with:
           image-ref: ${{ matrix.container }}
           format: template
