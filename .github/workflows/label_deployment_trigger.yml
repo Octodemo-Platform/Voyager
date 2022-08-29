@@ -27,7 +27,7 @@ jobs:
 
       - name: Acknowledge Request Label from Pull Request
         id: acknowledge_label
-        uses: actions/github-script@v4.1.0
+        uses: actions/github-script@v6.2.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -46,7 +46,7 @@ jobs:
           application_private_key: ${{ secrets.OCTODEMOBOT_APPLICATION_KEY_REPO_AUTOMATION }}
 
       - name: Create Deployment
-        uses: actions/github-script@v4.1.0
+        uses: actions/github-script@v6.2.0
         env:
           container_registry: ghcr.io
           app_container_image: ${{ github.repository_owner }}/${{ steps.acknowledge_label.outputs.app_container_image }}
@@ -77,7 +77,7 @@ jobs:
 
       - name: Report Failure
         if: failure()
-        uses: actions/github-script@v4.1.0
+        uses: actions/github-script@v6.2.0
         with:
           script: |
             const commentBody = `Failure in _${context.payload.label.name.toLowerCase()}_, for more details see https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${process.env.GITHUB_RUN_ID}`;
