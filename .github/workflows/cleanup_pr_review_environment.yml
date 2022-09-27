@@ -29,7 +29,7 @@ jobs:
           application_private_key: ${{ secrets.OCTODEMOBOT_APPLICATION_KEY_REPO_AUTOMATION }}
 
       - name: Mark environments as inactive in GitHub
-        uses: actions/github-script@v4.1.0
+        uses: actions/github-script@v6.3.0
         with:
           github-token: ${{ steps.temp_token.outputs.token }}
           script: |
