@@ -24,7 +24,7 @@ jobs:
 
       - name: Extract Deployment Details and Report Deployment in Progress
         id: deployment_data
-        uses: actions/github-script@v4.1.0
+        uses: actions/github-script@v6.4.0
         env:
           APP_PLAN_NAME: ${{ secrets.AZURE_APP_PLAN_NAME }}
         with:
@@ -110,7 +110,7 @@ jobs:
 
       - name: Report Deployment Status
         if: always()
-        uses: actions/github-script@v4.1.0
+        uses: actions/github-script@v6.4.0
         env:
           app_name: ${{ needs.deploy_details.outputs.app_name }}
           status: ${{ job.status }}

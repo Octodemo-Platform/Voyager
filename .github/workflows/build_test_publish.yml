@@ -42,7 +42,7 @@ jobs:
 
       - name: Define Build Parameters
         id: build_params
-        uses: actions/github-script@v4.1.0
+        uses: actions/github-script@v6.4.0
         with:
           script: |
             const scriptPath = require('path').resolve('./.github/workflows/scripts/buildParameters.js')
@@ -179,7 +179,7 @@ jobs:
 
       - name: Create Deployment
         id: create_deployment
-        uses: actions/github-script@v4.1.0
+        uses: actions/github-script@v6.4.0
         env:
           container_registry: ${{ needs.build.outputs.container_registry }}
           app_container_image: ${{ needs.build.outputs.container_owner }}/${{ needs.build_container.outputs.container_name }}
