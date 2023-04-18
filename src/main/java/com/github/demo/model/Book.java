@@ -13,11 +13,14 @@ public class Book {
 
     private int rating;
 
+    private String publisher;
+
     public Book() {
         this.title = "";
         this.author = "";
         this.cover = "";
         this.rating = 0;
+        this.publisher = ""
     }
 
     public Book(String author, String title) {
