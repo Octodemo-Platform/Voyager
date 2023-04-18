@@ -20,7 +20,7 @@ public class Book {
         this.author = "";
         this.cover = "";
         this.rating = 0;
-        this.publishr = ""
+        this.publisher = ""
     }
 
     public Book(String author, String title) {
